@@ -1,4 +1,14 @@
-\chapter{\emph{Probability}} 
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+
+
+\begin{document}
+
+\chapter{\emph{Probability}}
+%\chapter{\emph{Probability}} 
+
 \label{probability}
 
 \section{What is probability?}
@@ -10,4 +20,130 @@ Kolmogorov axioms
 
 \section{Independence and Bayes theorem}
 
+\subsection{Solved Exercises}
+
+%\title{ExercisePregnancy}
+%\author{Carmen Melo Toledo}
+
+
+\subsubsection{Pregnancy Test}
+
+    According to CDC (Center for Disease Control and Prevetion):
+    
+
+    \begin{center}
+     \begin{tabular}{||c | c||} 
+     \hline
+     Contraceptive Method & Percentage of failure\footnote{percentage of undesired pregnancy after a year} \\ [0.9ex] 
+     \hline\hline
+     Male Codon & 18\% \\ 
+    \hline
+    Pill & 9\% \\ 
+    \hline
+    Fertility-Awareness based method & 24\% \\ 
+    \hline
+    IUD & 0.5\% \\
+    \hline
+    \end{tabular}
+    \end{center}
+    consider a pregnancy test that 99\% accurate to positive and to negative\footnote{pregnancy tests usually are less accurate to avoid fake negatives, but to exemplify let's assume it}  and estimated the percentage of having a typical fertile couple have a fake positive after a year using:
+    \begin{enumerate}[(a)]
+        \item Male Codon
+        \item Pill
+        \item IUD
+        \item Pill and Male Codon
+    \end{enumerate}
+    
+
+
+\textbf{Answer}
+To solve this problem we shall use tow equations that we saw earlier
+\large{Bayes: }
+\begin{equation*}
+ \Pr[a|b]=\frac{\Pr[b|a]*\Pr[a]}{\Pr[b]}
+\end{equation*}
+
+
+ \large{theorem of total probability:}
+\begin{equation*}
+    \\ \Pr[a]=\Pr[a|b]*Pr[b]+Pr[a|\sim b]*Pr[\sim b]
+\end{equation*}
+
+So in general we have:
+
+\begin{equation*}
+    \large{\Pr[not pregnant| positive]=\frac{\Pr[positive|not pregnant]*\Pr[not pregnant]}{\Pr[positive]}}
+\end{equation*}
+
+where $\Pr[positive|not pregnant]$  is  the  accuracy,
+
+$\Pr[not pregnant]$ is 100\% - chance of failure and 
+
+$\Pr[positive]$ will be given by the second theorem
+
+\begin{equation*}
+\large{\Pr[positive]=\Pr[Positive|not pregnant}*\Pr[not pregnant]+\Pr[Positive|pregnant]*\Pr[pregnant]    
+\end{equation*}
+
+Let's apply to each letter:
+
+a)
+
+$\Pr[positive|not pregnant] = 1\%$
+
+$\Pr[not pregnant]= (100-18)\%=82\%$
+
+$\Pr[positive]=0.01*0.82+0.99*0.18=0.1864$
+
+So we have
+
+$\Pr[fake positive] = \frac{0.01*0.82}{0.1864}=0.044 or 4.4\%$
+
+
+b)
+
+$\Pr[positive|not pregnant] = 1\%$
+
+$\Pr[not pregnant]= (100-9)\%=91\%$
+
+$\Pr[positive]=0.01*0.91+0.99*0.09=0,0982$
+
+So we have
+
+$\Pr[fake positive] = \frac{0.01*0.91}{0.0982}=0.09266 or 9.3\%$
+
+c)
+
+$\Pr[positive|not pregnant] = 0.5\%$
+
+$\Pr[not pregnant]= (100-0.5)\%=99.5\%$
+
+$\Pr[positive]=0.01*0.995+0.99*0.005=0,0149$
+
+So we have
+
+$\Pr[fake positive] = \frac{0.01*0.995}{0.0149}=0.6678=66.8\%$
+
+d)
+
+Using codon and taking pill are independent events so the failure rate is the multiplication of the failure rates
+
+Failure Rate: 0.0162 = 1.62\%
+
+$\Pr[positive|not pregnant] = 1.62\%$
+
+$\Pr[not pregnant]= (100-1.62)\%=98.38\%$
+
+$\Pr[positive]=0.01*0.9838+0.99*0.0162=0,02588$
+
+So we have
+
+$\Pr[fake positive] = \frac{0.01*0.9838}{0.02588}=0.3801=38\%$
+
+\subsubsection{exercise 2}
+
+
 \section{Probability models}
+
+
+\end{document}
