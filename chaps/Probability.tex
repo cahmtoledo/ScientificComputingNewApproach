@@ -19,6 +19,37 @@ Kolmogorov axioms
 \section{Random variables}
 
 \section{Independence and Bayes theorem}
+\subsection{Illustrating Bayes Theorem}
+%In this section I am assuming that someone will transcript the example seen in class as an example in the book 
+
+At first sight, the Bayes Theorem don't appear so intuitive. But we can illustrate it using the set theorem.
+
+Firstly let's rescue the last example. A test 99\% precise to a sickness prevalent in 0.01\% of the population. Let A be a set of 1,000,000 persons. the subset of persons with this sickness B must have 100 elements.
+
+Suppose now that we applied the test to all persons in set A. We can divide this set in 4 subsets:
+
+$TP \subset A$: \{the test results a positive and they are sick\}
+
+$FP \subset A$:\{the test results a positive, but they aren't sick\}
+
+$TN \subset A$:\{the test results a negative and they aren't sick\}
+
+$FN \subset A$:\{the test results a negative, but they are sick\}
+
+So if we have 999,900 folk healthy than $99\%*999,900 = 989,901$ will result negative and 9,999 will result positive. And from our 100 folks sick 99 will result positive in test and 1 negative.
+
+So our sets will be:
+
+$||TN|| = 989,901$
+
+$||FN|| = 1$
+
+$||TP|| = 99$
+
+$||FP|| = 9,999$
+
+When we as what is the odds of receiving a positive and being sick we are looking to the subset of people who receive positive in the test that is $FP \cap TP$. And thus, considering all elements equiprobable $\Pr$(receiving positive and being sick)=$\frac{TP}{FP \cap TP} = \frac{99}{99+9,999}=0.0098$. Exacly the result founded by the Bayes Theorem.
+
 
 \subsection{Solved Exercises}
 
