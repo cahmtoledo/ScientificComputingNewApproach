@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+
+\title{Medindo com estatísticas}
+\author{Carmen Melo Toledo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+Suponha que queiramos medir um prego com uma régua com erro médio $\sigma$, como poderíamos fazer isso?
+
+\subsection{Distribuição gaussiana}
+É razoável supormos que a distribuição das medidas seguirá a curva gaussiana, ou seja
+
+\begin{equation}
+    P(M|\mu, \sigma) = (\sigma \sqrt{2\pi})^{-1} e^{\frac{-(M-\mu)^2}{2\sigma^2}}
+\end{equation}
+
+Onde M é a medida feita e $\mu$ é o valor de fato do prego que queremos descobrir.
+
+Montando a equação de bayes temos
+
+\begin{equation*}
+    P(\mu| \{D\}, \sigma) = \frac{P(\{D\}|\mu, \sigma)P(\mu|\sigma)}{P(\{D\}|\sigma)}
+\end{equation*}
+É razoável considerarmos todos os valores de $\mu$ equiprováveis e vamos ignorar a evidência.
+
+\begin{equation*}
+    P(\mu|\{D\},\sigma) \propto P(\{D\}|\mu, \sigma)
+\end{equation*}
+
+Como os dados são independentes entre si
+
+\begin{equation*}
+    P(\{D\}| \mu, \sigma) = \prod_{k=1}^N P(D_k|\mu,\sigma)
+\end{equation*}
+
+\begin{equation*}
+    P(\{D\}| \mu, \sigma) = (\sigma\sqrt{2\pi})^N \exp{\Big( \frac{-\sum_{k=1}^{N}(D_k-\mu)^2}{2\sigma^2}\Big)}
+\end{equation*}
+
+Jogando na equação e tirando o log dos dois lados chegamos em
+
+\begin{equation*}
+    L = log(\mu| \{D\} \sigma)) = C - \frac{\sum_{k=1}^{N}(D_k-\mu)^2}{2\sigma^2}
+\end{equation*}
+
+O valor mais provável de $\mu$ é aquele que zera a derivada de L com relação a $\mu$
+
+\begin{equation*}
+    \frac{\partial L}{\partial \mu} = \frac{\sum_{k=1}^{N}(D_k-\mu)}{\sigma^2} = 0 \iff \mu = \frac{1}{N}\sum_{k=1}^{N}(D_k)
+\end{equation*}
+
+Com isso chegamos a "surpreendente" conclusão que a medida mais provável é a média das medidas tomadas
+\end{document}
