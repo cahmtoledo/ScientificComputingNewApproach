@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Introdução a teoria da informação}
+\author{Carmen Melo Toledo}
+\date{Janeiro 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problemática}
+Se você já teve a experiência de um HD (Hard Disk) velho que parou de funcionar ou já tentou falar com alguém, mas a mensagem estava com chiado percebeu que a informação, em geral sofre ruído quando transportada tanto no tempo como no espaço. No entanto, preservar informação intacta é uma necessidade para todos os seres vivos, pois um organismo que tenha dificuldade de manter o DNA relativamente igual ao longo do tempo teria diversas complicações.
+
+Para resolver esse problema pode-se criar dispositivos com menos ruídos, mas isso muitas vezes é custoso e tem limitações. Uma segunda opção é usar parte do espaço de armazenamento (ou transporte) para colocar dados com alguma redundância e assim recuperar as informações. Por exemplo se você tem várias cópias de um disco é possível selecionar cada pedaço a informação contida na maioria e assim resgatar com uma boa chance de dar certo a informação inicial.
+
+\section{Correção de ruídos por repetição}
+Então, suponha que queremos mandar uma informação s para alguém, como visto essa informação pode ser codificada em bits. Então vamos supor que temos $s=(0,1,0,0,1,0)$ e sabemos previamente que o canal tem um ruído r ($r\leq.5$) ou seja, r bits serão invertidos ao serem enviados (0 vira 1 e 1 vira 0). Uma maneira de garantir a fidelidade da mensagem enviada é enviar três vezes a mesma mensagem, para simplificar vamos enviar três vezes seguidas cada bit, ou seja $s'=(0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0)$, uma mensagem de 18 bits.
+
+Podemos representar o ruído como uma sequência de 18 bits que será somada a nosso s' módulo 2. Por exemplo $u=(1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0)$, em u $u_i=1$ com probabilidade r e $u_i=0$ com 1-r.
+
+A mensagem recebida nesse caso seria $m=(1,0,1,1,1,1,0,1,0,0,0,0,0,1,1,1,0,0)$ e o melhor modo de decodificar é para cada três  dígitos escolher o em maior quantidade, ficando:
+$m'=(1,1,0,0,1,0)$, repare que embora o ruído tenha alterado 5 bits, na mensagem decodificada apenas 1 bit foi alterado.
+
+\subsection{Exercício rápido: Qual a probabilidade de um bit ser transmitido errado usando essa técnica?}
+ \textbf{Solução:}
+ A probabilidade de ter um erro é a probabilidade de dois ou mais bits irem errados. Ou seja
+ é a probabilidade de o 1º e o 2º trocarem e o 3º não trocar mais a probabilidade do 2º e do 3º trocarem e o 1º não trocar mais a probabilidade do 1º e 3º trocarem e o 2º não trocar mais a probabilidade de os três trocarem.
+ $r^2(1-r)+r^2(1-r)+r^2(1-r)+r^3=r^2(3-2r)$
+ 
+ \section{Como ser mais eficiente?}
+ 
+O algoritmo apresentado é um algoritmo um pouco ingênuo pois precisa-se de o triplo do espaço para guardar a mensagem, existem técnicas que conseguem usar menos espaço como o \textit{Hamming code}
+
+Uma pergunta é qual o mínimo de espaço a mais que é necessário para conseguir garantir quase com certeza que a mensagem é fidedigna? Essa pergunta foi respondida por Shannon (o mesmo da entropia).
+
+Suponha que temos 1 de espaço total e ele é suficientemente grande, Shannon chegou que poderíamos armazenar uma mensagem e garantir sua fidelidade se ela ocupa-se até C, onde C é dado por
+
+\begin{equation}
+    C= 1-(r \log(r^(-1))+(1-r)\log((1-r)^(-1)))
+\end{equation}
+
+A mensagem tem que ser suficientemente grande, por exemplo se r=0.1, C~0.53, mas não é possível garantir a fidelidade de 1 bit com 2 bits é necessário mais.
+
+\section{Para aprofundar}
+Information Theory; David MacKay
+
+\end{document}
