@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Medindo com estatística parte 2}
+\author{Carmen Melo Toledo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Suponha agora que tenhamos medido o tamanho do parafuso com uma régua de erro $\sigma$ desconhecido.
+Como podemos fazer para inferir a medida mais provável?
+
+\subsection{Teorema da marginalização}
+Vamos partir da mesma distribuição gaussina:
+
+\begin{equation}
+    P(M|\mu, \sigma) = (\sigma \sqrt{2\pi})^{-1} e^{\frac{-(M-\mu)^2}{2\sigma^2}}
+\end{equation}
+
+Porém nesse caso, $\sigma$ é desconhecido então teremos que usar o teorema da marginalização. 
+
+\begin{equation}
+    P(\mu|\{D_k\}, \theta) = \int_0^\infty P(\mu,\sigma|\{D_k\}|, \theta) \, d\sigma
+\end{equation}
+
+Com isso e chamando $\sigma = t$ chegamos em
+
+\begin{equation*}
+    P(\mu|\{D_k\}, \theta) \propto \int_0^\infty \! t^{N-2}\exp{ \Big( -\frac{t^2}{2}\sum_{k=1}^N (x_k-\mu)^2 \Big) } \, dt
+\end{equation*}
+
+\begin{equation*}
+    P(\mu|\{D_k\}, \theta) \propto \Big( \sum_{k=1}^N(x_k-\mu)^2 \Big)^{-\frac{(N-1)}{2}}
+\end{equation*}
+
+    se chamarmos de $L = log(P(\mu|\{D_k\}, \theta))$, sabemos que $\frac{\partial L}{\partial \mu} = 0 \iff$
+    
+    \begin{equation*}
+        \iff \frac{(N-1) \sum_{k=1}^N (x_k - \mu)}{\sum_{k=1}^N(x_k - \mu)^2} = 0
+    \end{equation*}
+    
+    De onde concluímos novamente que $\mu = N^{-1}\sum_{k=1}^N x_k$
+
+    Mas se chegamos a mesma conclusão sabendo ou não qual o erro qual a diferença, isso será discutido no próximo tópico
+    
+    \subsection{Observação}
+    
+    É importante salientar que essa convergência pressupõe que os erros vão seguir a distribuição gaussiana, ou seja terão estatisticamente a mesma quantidade de erros para cima e para baixo. Se por exemplo uma régua ou paquímetro não certificada pelo inmetro possuir o milimetro levemente maior do que o normal a média não vai convergir para o tamanho real nunca, será necessário realizar outro tipo de análise ou mudar o instrumento
+    
+\end{document}
