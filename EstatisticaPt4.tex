@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+
+\title{Calculando a precisão da medida}
+\author{Carmen Melo Toledo}
+\date{January 2020}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Para achar o erro aproximado vamos aproximar a função de uma gaussiana dada pela equação
+
+\begin{equation}
+    g(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp{\Big( - \frac{(x-x')}{2\sigma} \Big)}
+\end{equation}
+
+\subsection{Aproximando por uma gaussiana}
+
+seja $L=log(P(X|\{D\}, \theta))$
+
+se fizermos a expansão de taylor até o segundo termo teremos:
+
+\begin{equation*}
+    L(x) \approx L(x') + \frac{1}{2} \frac{\partial^2 L}{\partial x^2}\Big|_{x'} (x-x')^2
+\end{equation*}
+
+De onde temos que 
+
+\begin{equation*}
+P(x| \{ D \}, \theta) \approx C \exp{\Big( \frac{1}{2} \frac{\partial^2 L}{\partial x^2}\Big|_{x'} (x-x')^2  \Big)}
+\end{equation*}
+
+
+
+\subsection{Calculando $\sigma$}
+
+Se compararmos com a equação da gaussiana percebemos que
+
+\begin{equation}
+    \sigma = \Big(- \frac{\partial^2 L}{\partial x^2} \Big)^{-\frac{1}{2}}
+\end{equation}
+
+
+\subsection{$\sigma$ na medida com erro}
+
+Na parte dois vimos que
+
+\begin{equation*}
+    \frac{\partial L}{\partial \mu} = \frac{\sum_{k=1}^{N}(D_k-\mu)}{\sigma'^2} = 0 \iff \mu = \frac{1}{N}\sum_{k=1}^{N}(D_k)
+\end{equation*}
+
+Performando a segunda derivada chegamos que
+
+\begin{equation*}
+    \frac{\partial^2 L}{\partial \mu^2} = \frac{\sum_{k=1}^{N} 1}{\sigma'^2} = \frac{N}{\sigma'^2} 
+\end{equation*}
+
+de onde tiramos que $\sigma = \frac{\sigma'}{\sqrt{N}}$
+
+\subsection{$\sigma$ na medida sem erro}
+
+Nesse caso teremos
+\begin{equation*}
+      \frac{\partial^2 L}{\partial \mu^2} = -\frac{N(N-1)}{\sum(x_k-\mu)^2}
+\end{equation*}
+
+De onde sai que
+
+\begin{equation*}
+    \sigma = \sqrt{(N-1)^{-1}\sum(x_k-\mu)^2} / \sqrt{N}
+\end{equation*}
+
+
+
+\end{document}
