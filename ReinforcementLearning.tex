@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage[nottoc]{tocbibind}
+\usepackage{graphicx}
+\setlength{\parskip}{0.05em}
+\renewcommand{\baselinestretch}{1.5}
+\frenchspacing
+
+\title{Introduction to Reinforcement Learning}
+\author{Carmen Melo Toledo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+    Since here, in this book we have being seeing supervised learning, in this we suppose we have a function $f(X)=y$ where X is a set of parameters and y is a classification. In this we want to find g that better approximate to f from samplings of f.
+    
+    In reinforcement learning we have sequential problem, so we are in a state and taking some action we go to another state and receive some reward, so we want to maximize the reward received trough time.
+    
+    To model this problem we use a Markov Decision Process (MDP), a mathematical structure that allows us to made strategies for maximizing reward.
+     
+\section{Markov Decision Process}
+
+MDP consist in turple $<S,A,P_0>$, where S are the set of possible states, A are the set of actions and $P_0$ is a function that maps the probability of going to a state s' ($s' \in S$) and receiving its associated reward r ($r \in \mathbf{R}$), leaving a state s ($s \in S$) when taking the action a ($a \in A$), i.e. $P_0((s',r),s,a)= P(s',r|s,a)$.
+
+
+From $P_0$ we get two important functions, the probability transition $P_t$ that is the probability of going from s to s' when taking a as action, i. e. $P_t(s',s,a)=P_0((s',r),s,a)$
+
+And the reward function R that calculates the expectation of reward when being in s and taking a
+
+\section{Applying MDP in world problems}
+
+Suppose in a chess game, one possible way to create the MDP is S be all combinations of pieces in the board (it's a lot we know) and A all actions that can be due with each piece, obviously not all actions are allowed in each turn, for example we cannot move our queen with the piece is not in the game anymore.
+
+In this scenario the reward function associated with each state will be 1 if the player wins and 0 otherwise and the $P_0$ will be deterministic, for example, if is the beginning of the game and the action is b4 the pawn will go to b4 with probability 1.00 and the reward will be 0. If the action is Qa8, as is a not valid action, nothing will happen.
+
+That is not the only or the smart way of doing this, but is a possible. Algorithms that deal with so much options use approximations and don't precalculate all states
+
+\section{Conclusion}
+
+This was an introduction to reinforcement learning, it is meant just to give a intuintion on the issue and lacks methods for solving reinforcement learning problems, but, they lay in estimating the movement that will ultimate result in the biggest reward.
+
+For further readings we recommend:
+
+Algorithms for Reinforcement Learning; Csaba Szepesvári; 2009
+Reinforcement Learning; Sutton et al.; 2ed 2018
+
+\end{document}
