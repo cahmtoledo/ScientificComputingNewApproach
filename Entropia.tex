@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Entropia}
+\author{Carmen Melo Toledo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Até o final do ensino médio um aluno provavelmente encontrou a seguinte equação de variação de entropia.
+
+\begin{equation*}
+    \Delta S = \int \frac{\Delta Q_{rev}}{T}
+\end{equation*}
+
+Essa equação o auxilia a calcular a variação de entropia de um sistema. Um estudo um pouco mais aprofundado permite medir a entropia absoluta de um sistema, através da equação de Boltzmann
+
+\begin{equation*}
+    S = k log W
+\end{equation*}
+Onde k é uma constante e W é o numero total de microestados. Agora apresentaremos uma entropia relacionada a medida de informação e de incerteza sobre um objeto. A chamada entropia de Shannon
+
+\subsection{O que é informação?}
+
+Suponha um quadrado $4 \times 4$ onde temos 15 quadrados brancos e 1 quadrado preto. 
+
+A maneira mais eficiente de determinar a configuração absoluta desse quadrado pode ser feita à partir de 4 perguntas de sim ou não:
+Supondo um ponto no centro do quadrado
+\textit{O quadrado preto está em cima do ponto?}, \textit{O quadrado preto está a direita?}. Agora supondo um ponto no centro do quadrado restante, 
+\textit{O quadrado preto está em cima do ponto?}, \textit{O quadrado preto está a direita do ponto?}
+
+Uma outra maneira seria chutando a casa, onde em 1/16 das vezes acetaremos de primeira. E no pior caso, acertaremos $na 16^a$ tentativa.
+
+Repare que se definirmos informação como:
+\begin{equation}
+    s(x) = \log_2\frac{1}{P(x)}
+\end{equation}
+
+Em todos os casos chegaremos a conclusão que esse tabuleiro tem 4 de informação, chamaremos a unidade de informação de bit, assim o tabuleiro tem 4 bits de informação. E de fato com uma sequência de 4 variáveis booleanas é possível armazenar a geometria desse tabuleiro, basta considerar cada bit como a resposta de cada uma das 4 questões (1 para sim e 0 para não).
+
+\subsection{Entropia de Shannon}
+
+Chamaremos  de entropia de Shannon a média da informação sobre um objeto, obtida por um determinado evento
+
+\begin{equation}
+    S(x) = \sum_{x \in A_x} P(x)\log_2 \frac{1}{P(x)}
+\end{equation}
+
+Assim a entropia do nosso quadrado é $S = \frac{15}{16} \log \frac{16}{15} + \frac{1}{16} \log 16 \approx 0.3373$. Repare que se o quadrado fosse uniformemente branco ou preto a entropia seria 0. Se tivesse números iguais de casas pretas e brancas seria 2 e se cada casa tivesse uma cor, sua entropia seria 4.
+
+Isso ajuda-nos a inferir que a entropia mede a incerteza de algo. E também nos permite visualizar duas propriedades de S:
+
+\begin{enumerate}
+    \item $S(x) \geq 0$
+    \item $S(x) = 0 \iff \exists x \in A_x, \, tq \,\, P(x)=1$
+    \item $S(x) \leq \log_2(\| A_x \|)$
+    \item $S(x) = \log_2 (\| A_x \|) \iff \forall x \in A_x,\,tq \,\, P(x)= \frac{1}{\| A_x \|}$
+\end{enumerate}
+
+\end{document}
