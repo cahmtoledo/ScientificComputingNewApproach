@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Os Tipos de aprendizado de máquina}
+\author{Carmen Melo Toledo}
+\date{Janeiro 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Um problema de machine learning, pode ser descrito como um problema em que temos um conjunto de funções H e queremos achar a função que melhor se adéque aos samples gerados por uma "caixa preta". A partir disso dividimos os problemas de machine learning em três casos:
+
+\subsection{Aprendizado supervisionado}
+
+O aprendizado supervisionado é a forma mais comum de machine learning que existe, nesse nosso conjunto de treinamento tem como sample uma série de parâmetros e uma classificação. Nosso objetivo é achar uma função, que dado os parâmetros classifica corretamente o objeto.
+
+Por exemplo, a série de parâmetros pode ser peso, tamanho, medida das barbatanas e o objetivo do programa ser classificar corretamente a espécie do peixe. Ou dado uma série de dados bancários determinar se a pessoa vai ou não pagar o empréstimo.
+
+\subsection{Aprendizado não-supervisionado}
+
+O aprendizado não-supervisionado o objetivo é agrupar objetos semelhantes e desenvolver categorias adequadas, ou seja nesse caso enquanto no aprendizado supervisionado sabemos a classificação do grupo de testes, no não supervisionado não sabemos a classificação e queremos criá-la. Isso pode ser usado por exemplo para agrupar tipos de clientes com base no histórico de compra, ou estrutura cerebral com base no padrão de ativações.
+
+\subsection{Aprendizado por reforço}
+
+No aprendizado por reforço é dado uma tarefa sequencial e o objetivo é maximizar a recompensa ganha durante a realização dessa tarefa. Os samples de treinamento são normalmente históricos de realização dessa tarefa. Exemplos de onde isso é utilizado é por exemplo em jogos, já que a jogada anterior é importante para as jogadas futuras ou tarefas mecânicas, já que envolve uma série de ativações de motores por exemplo.
+
+\end{document}
